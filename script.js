@@ -15,6 +15,7 @@ window.addEventListener('load', () => {
 
         const task_el = document.createElement("div");
         task_el.classList.add("updatetask");
+        console.log(updatetask)
 
         const task_content_el = document.createElement("div");
         task_content_el.classList.add("content");
