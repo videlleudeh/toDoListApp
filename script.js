@@ -2,6 +2,7 @@ window.addEventListener('load', () => {
     const form = document.querySelector("#task-form");
     const input = document.querySelector("#task-input");
     const list_el = document.querySelector("#task");
+    var counter = 0
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -15,19 +16,20 @@ window.addEventListener('load', () => {
 
         const task_el = document.createElement("div");
         task_el.classList.add("updatetask");
-        console.log(updatetask)
+        // console.log(updatetask)
 
-        const task_content_el = document.createElement("div");
+        const task_content_el = document.createElement("input");
         task_content_el.classList.add("content");
-        // task_content_el.innerText = updatetask;
-
+        task_content_el.type = "text";
+        task_content_el.setAttribute("readonly", "readonly");
+        task_content_el.value = `${counter+=1}. ${updatetask}`;
         task_el.appendChild(task_content_el);
 
-        const task_input_el = document.createElement("input");
-        task_input_el.classList.add("text");
-        task_input_el.type = "text"; 
-        task_input_el.value = updatetask;
-        task_input_el.setAttribute("readonly", "readonly");
+        // const task_input_el = document.createElement("input");
+        // task_input_el.classList.add("text");
+        // task_input_el.type = "text"; 
+        // task_input_el.value = updatetask;
+        // task_input_el.setAttribute("readonly", "readonly");
 
         const task_actions_el = document.createElement("div")
         task_actions_el.classList.add("actions")
@@ -51,18 +53,19 @@ window.addEventListener('load', () => {
 
         task_edit_el.addEventListener('click',() =>{
             if (task_edit_el.innerHTML == "EDIT") {
-                task_input_el.removeAttribute("readonly");
-                task_input_el.focus();
+                task_content_el.removeAttribute("readonly", "readonly");
+                task_content_el.focus();
                 task_edit_el.innerText = "SAVE";
             }
             else {
                 // console.log("Save");
-                task_input_el.setAttribute("readonly", "readonly");
+                task_content_el.setAttribute("readonly", "readonly");
                 task_edit_el.innerHTML = "EDIT"
             }
         }); 
 
         task_delete_el.addEventListener('click', () => {
+            counter -=1
             list_el.removeChild(task_el);
         });
     })
