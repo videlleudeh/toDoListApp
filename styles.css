@@ -106,6 +106,9 @@ main {
 
 .content {
     flex: 1 1 0%;
+    font-size: large;
+    font-weight: 500;
+    color: #fff;
 }  
 
 #task .updatetask .content .text {
